@@ -5,30 +5,30 @@ import org.junit.Test;
 
 public class JuegoTest {
 	Juego juego = new Juego();
-	Total total;
+	Puntaje total;
 	
 	@Before
 	public void inicializar() {
-//		total = new Total();
+		juego= new Juego();
 	}
 	
 	@Test
 	public void todosLosLanzamientosAlCanal() throws Exception {
-		total = new Total();
+		total = new Puntaje();
 		lanzarVarios(20, 0);
 		assertEquals(total, juego.puntaje());
 	}
 	
 	@Test
 	public void todosLosLanzamientosDerribanUnPino() throws Exception {
-		total = new Total(20);
+		total = new Puntaje(20);
 		lanzarVarios(20, 1);
 		assertEquals(total, juego.puntaje());
 	}
 	
 	@Test
 	public void variosLanzamientosConUnSpare() throws Exception {
-		total = new Total(14);
+		total = new Puntaje(14);
 		
 		lanzarSpare();
 		juego.lanzar(2);
@@ -39,7 +39,7 @@ public class JuegoTest {
 
 	@Test
 	public void variosLanzamientosConUnStrike() throws Exception {
-		total = new Total(24);
+		total = new Puntaje(24);
 		
 		lanzarStrike();
 		juego.lanzar(3);
@@ -55,7 +55,7 @@ public class JuegoTest {
 	
 	@Test
 	public void juegoPerfecto() throws Exception {
-		total = new Total(300);
+		total = new Puntaje(300);
 		lanzarVarios(12, 10);
 		assertEquals(total, juego.puntaje());
 	}
